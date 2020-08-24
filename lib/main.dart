@@ -74,8 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
             topbar,
             languagechooser,
             logo,
+            signinwithfacebook,
+            orbar,
             signinform,
             forgotpassword,
+            Spacer(
+              flex: 1,
+            ),
             signuplink,
           ],
         ),
@@ -89,7 +94,7 @@ Widget topbar = Container(
     gradient: LinearGradient(
       begin: Alignment.bottomRight,
       end: Alignment.bottomLeft,
-      colors: [Colors.red, Colors.pink],
+      colors: [Colors.red, Colors.purple],
     ),
   ),
   child: Row(
@@ -104,6 +109,7 @@ Widget topbar = Container(
               'IG Clone',
               style: GoogleFonts.oswald(
                 color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
               softWrap: true,
             ),
@@ -162,23 +168,69 @@ Widget languagechooser = Container(
 Widget logo = Container(
   padding: const EdgeInsets.all(32),
   child: Text(
-    'Logo',
-    style: GoogleFonts.oswald(),
+    'IG Clone',
+    style: GoogleFonts.pacifico(
+      color: Colors.black,
+      fontSize: 44.0,
+    ),
     softWrap: true,
+  ),
+);
+
+Widget orbar = Container(
+  padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 10.0),
+  child: Text(
+    '--------------or--------------',
+    style: GoogleFonts.oswald(),
+  ),
+);
+
+Widget signinwithfacebook = Container(
+  child: RaisedButton(
+    color: Colors.blueAccent,
+    child: Text('Continue with Facebook'),
+    onPressed: () {},
   ),
 );
 
 Widget signinform = Container(
-  padding: const EdgeInsets.all(32),
-  child: Text(
-    'Registration Form',
-    style: GoogleFonts.oswald(),
-    softWrap: true,
+  padding: const EdgeInsets.symmetric(
+    horizontal: 30.0,
+  ),
+  child: Column(
+    children: [
+      TextFormField(
+        decoration: const InputDecoration(
+          hintText: 'Email, phone, username',
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
+      ),
+      TextFormField(
+        decoration: const InputDecoration(
+          hintText: 'Password',
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
+      ),
+      RaisedButton(
+        child: Text('Login'),
+        onPressed: () {},
+      )
+    ],
   ),
 );
 
 Widget forgotpassword = Container(
-  padding: const EdgeInsets.all(32),
+  padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
   child: Text(
     'Forgot password',
     style: GoogleFonts.oswald(),
@@ -189,8 +241,10 @@ Widget forgotpassword = Container(
 Widget signuplink = Container(
   padding: const EdgeInsets.all(32),
   child: Text(
-    'Logo',
-    style: GoogleFonts.oswald(),
+    "Don't have an account? Sign Up",
+    style: GoogleFonts.oswald(
+      color: Colors.blue[700],
+    ),
     softWrap: true,
   ),
 );
